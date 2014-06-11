@@ -1,0 +1,35 @@
+{
+  "name": "through2-objectify",
+  "version": "0.0.1",
+  "description": "A through2 for transforming buffer (or string) streams into objectMode ones (or vice-versa).",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tec27/through2-objectify"
+  },
+  "keywords": [
+    "through2",
+    "objectMode",
+    "buffer",
+    "string",
+    "transform"
+  ],
+  "author": "Travis Collins <travis@tec27.com> (http://tec27.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tec27/through2-objectify/issues"
+  },
+  "homepage": "https://github.com/tec27/through2-objectify",
+  "dependencies": {
+    "through2": "^0.5.1",
+    "inherits": "^2.0.1"
+  },
+  "devDependencies": {
+    "tap": "^0.4.11",
+    "stream-spigot": "^3.0.4",
+    "concat-stream": "^1.4.6"
+  }
+}
