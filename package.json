@@ -1,6 +1,6 @@
 {
   "name": "through2-objectify",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A through2 for transforming buffer (or string) streams into objectMode ones (or vice-versa).",
   "main": "index.js",
   "scripts": {
