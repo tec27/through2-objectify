@@ -43,7 +43,7 @@ net.connect(1337).pipe(objectify(function(chunk, enc, cb) {
 
 Create a through2 transform stream that converts buffers (or strings) to objects.
 
-<b><code>objectify.ctor([options,] transformFn [, flushFn])</code><b>
+<b><code>objectify.ctor([options,] transformFn [, flushFn])</code></b>
 
 Returns a constructor function for a custom stream that converts buffers (or strings) to objects. Useful if you want to have multiple streams with the same transform/flush functions, or if you want to inherit from the stream type.
 
