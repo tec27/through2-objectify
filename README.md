@@ -39,26 +39,26 @@ net.connect(1337).pipe(objectify(function(chunk, enc, cb) {
 ## API
 `var objectify = require('through2-objectify')`
 
-`objectify([options,] transformFn [, flushFn])`
+<b><code>objectify([options,] transformFn [, flushFn])</code></b>
 
 Create a through2 transform stream that converts buffers (or strings) to objects.
 
-`objectify.ctor([options,] transformFn [, flushFn])`
+<b><code>objectify.ctor([options,] transformFn [, flushFn])</code><b>
 
 Returns a constructor function for a custom stream that converts buffers (or strings) to objects. Useful if you want to have multiple streams with the same transform/flush functions, or if you want to inherit from the stream type.
 
-`objectify.deobj([options,] transformFn [, flushFn])`
+<b><code>objectify.deobj([options,] transformFn [, flushFn])</code></b>
 
 Create a through2 transform stream that converts objects to buffers (or strings).
 
-`objectify.deobjCtor([options,] transformFn [, flushFn])`
+<b><code>objectify.deobjCtor([options,] transformFn [, flushFn])</code></b>
 
 Returns a constructor function for a custom stream that converts objects to buffers (or strings).
 
 ### options
 Any options valid for Transform streams can be passed, as well as the following objectify-specific options:
 
-`objectHighWaterMark`
+<b><code>objectHighWaterMark</code></b>
 
 Sets the highWaterMark specifically for the object side of the stream
 (i.e. Readable on objectify, Writable on deobjectify). This allows you to control highWaterMarks separately
