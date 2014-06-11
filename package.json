@@ -4,7 +4,7 @@
   "description": "A through2 for transforming buffer (or string) streams into objectMode ones (or vice-versa).",
   "main": "index.js",
   "scripts": {
-    "test": "tap test/"
+    "test": "tap test/*"
   },
   "repository": {
     "type": "git",
@@ -28,8 +28,8 @@
     "inherits": "^2.0.1"
   },
   "devDependencies": {
-    "tap": "^0.4.11",
+    "concat-stream": "^1.4.6",
     "stream-spigot": "^3.0.4",
-    "concat-stream": "^1.4.6"
+    "tap": "^0.4.11"
   }
 }

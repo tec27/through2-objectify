@@ -62,7 +62,23 @@ test('ctor, options', function(t) {
     .pipe(concatEquals(t, { objectMode: true }, objectifiedData))
 })
 
-// TODO(tec27): objectHighWaterMark tests
+test('objectify, objectHighWaterMark', function(t) {
+  var chunks = 0
+  var stream = objectify({ objectHighWaterMark: 1 }, function(chunk, enc, cb) {
+    chunks++
+    this.push({ value: chunk.toString() })
+    cb()
+  })
+
+  var moar = stream.write('a')
+  t.equal(moar, true)
+  moar = stream.write('s')
+  t.equal(moar, true)
+
+  // only one object should have been created, after that the readable buffer is full
+  t.equal(chunks, 1)
+  t.end()
+})
 
 function objTransform(obj, enc, cb) {
   this.push(obj.value)
@@ -106,3 +122,27 @@ test('deobjCtor, options', function(t) {
     .pipe(concatEquals(t, { decodeStrings: false }, strData))
 })
 
+test('deobjectify, objectHighWaterMark', function(t) {
+  var chunks = 0
+  var stream = objectify.deobj({ objectHighWaterMark: 2, highWaterMark: 1 },
+      function(obj, enc, cb) {
+    chunks++
+    this.push(obj.value)
+    cb()
+  })
+
+  // Chunks will be processed until the readable buffer is full, the writable
+  // will be marked full once the readable is full and it has then buffered to
+  // full. We use 3 writes here because the objectHighWaterMark=1 state leads to
+  // a weird off-by-one edge case where the writable stream thinks its full even
+  // though it hasn't buffered anything.
+  var moar = stream.write({ value: 'a' })
+  t.equal(moar, true)
+  moar = stream.write({ value: 's' })
+  t.equal(moar, true)
+  moar = stream.write({ value: 'd' })
+  t.equal(moar, false)
+
+  t.equal(chunks, 1)
+  t.end()
+})
